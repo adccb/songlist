@@ -2,11 +2,14 @@
 layout: page
 title: songs bitches
 ---
-
 <ul>
-{% for song in site.songs%}
-<a href="{{ song.url }}">
-  <li>{{ song.instruments | instrument }} {{ song.title }}</li>
-</a>
+{% for song in site.songs %}
+  {% if song.ready == false %}
+    <li class='disabled'>[{{ song.instruments | instrument }}] {{ song.title }}</li>
+  {% else %}
+    <a href="{{ song.url }}">
+      <li>󠀠[{{ song.instruments | instrument }}] {{ song.title }}</li>
+    </a>
+  {% endif %}
 {% endfor %}
 </ul>

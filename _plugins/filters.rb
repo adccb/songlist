@@ -1,17 +1,7 @@
 module Jekyll
   module InstrumentFilter
     def instrument(input)
-      input.map { |input|
-        if input == 'guitar'
-          "🎸"
-        elsif input == 'fiddle'
-          "🎻"
-        elsif input == 'keys'
-          "🎹"
-        elsif input == 'banjo'
-          "🪕"
-        end
-      }.join(" ")
+      input.map { |input| input[0] }.join(" ")
     end
   end
 
