@@ -1,0 +1,14 @@
+---
+layout: page
+title: song bitches
+---
+
+<div>
+  <p>artist: {{ page.artist }}</p>
+  <p>key: {{ page.key }}</p>
+  <p>instruments: {{ page.instruments | instrument }}
+  <br />
+  <br />
+  <p>lyrics:</p>
+  <div>{{ content | lyrics }}</div>
+</div>
