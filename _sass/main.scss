@@ -5,9 +5,57 @@
 $light: ( "background": white, "color": #333, "hover": rgba(0, 0, 0, 0.2) );
 $dark: ( "background": #333, "color": #efefef, "hover": rgba(0, 0, 0, 0.2) );
 
+$instruments: (
+  "g": #7D8CC4,
+  "b": #5AAA95,
+  "m": #7B435B,
+  "f": #E9806E,
+  "u": #111D13,
+);
+
+@mixin pill {
+  color: white;
+  border: 2px white solid;
+  font-size: 1.4rem;
+  padding: 0.3rem;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@each $class, $hex in $instruments {
+  span.#{$class} {
+    @include pill;
+    background-color: $hex;
+  }
+}
+
+span.disabled {
+  @include pill;
+  background-color: #ED6A5A;  
+}
+
+.theme-btn {
+  @include pill;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  &.light {
+    background-color: #D2A1B8;
+  }
+
+  &.dark {
+    background-color: #D2A1B8;
+  }
+}
+
 body {
+  font-size: 1.2em;
   line-height: 1.2;
-  font-size: 1.25rem;
   font-family: "Fira Code", monospace;
   text-transform: lowercase;
   margin: 0;
@@ -18,7 +66,6 @@ body {
   a { text-decoration: none; }
   li.disabled {
     cursor: not-allowed;
-    text-decoration: line-through;
   }
 
   &.light {
@@ -55,13 +102,29 @@ div.container {
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
 
-  & > div {
-    padding-top: 5vh;
-    min-width: 900px;
-    max-width: 1100px;
+  $bar-width: 5vw;
+
+  & > div.bar {
+    border-right: 1px map-get($dark, "color") solid;
+    width: $bar-width;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 2vh;
+    background-color: #333;
+  }
+
+  & > div.list {
+    width: 100vw - $bar-width;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    & > div {
+      padding: 5vh 10vw;
+      max-width: 1100px;
+    }
   }
 }

@@ -5,10 +5,13 @@ title: songs bitches
 <ul>
 {% for song in site.songs %}
   {% if song.ready == false %}
-    <li class='disabled'>[{{ song.instruments | instrument }}] {{ song.title }}</li>
+    <li class='disabled'>
+      <span class='disabled'>x</span>
+      {{ song.instruments | instrument }} {{ song.title }}
+    </li>
   {% else %}
     <a href="{{ song.url }}">
-      <li>󠀠[{{ song.instruments | instrument }}] {{ song.title }}</li>
+      <li>{{ song.instruments | instrument }} {{ song.title }}</li>
     </a>
   {% endif %}
 {% endfor %}

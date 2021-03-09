@@ -1,7 +1,7 @@
 module Jekyll
   module InstrumentFilter
     def instrument(input)
-      input.map { |input| input[0] }.join(" ")
+      input.map { |input| "<span class='#{input[0]}'>#{input[0]}</span>" }.join(" ")
     end
   end
 

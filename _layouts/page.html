@@ -3,13 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page.title }} - {{ site.songs | size }} tunes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/assets/css/main.css">
   </head>
   <body class='dark'>
     <div class='container'>
-      {{ content }}
+      <div class='bar'></div>
+
+      <div class='list'>
+        {{ content }}
+      </div>
     </div>
 
     <script src="/assets/js/index.js"></script>
+    <script src="/assets/js/add-song-to-history.js"></script>
   </body>
 </html>
